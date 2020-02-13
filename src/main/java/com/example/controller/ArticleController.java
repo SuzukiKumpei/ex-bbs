@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Article;
+import com.example.domain.Comment;
 import com.example.form.ArticleForm;
 import com.example.repository.ArticleRepository;
 
@@ -41,10 +42,10 @@ public class ArticleController {
 	 * @return 投稿内容
 	 */
 	@RequestMapping("")
-	public String index(ArticleForm articleForm, Model model) {
-		Article article = new Article();
-		article.setName(articleForm.getName());
-		article.setContent(articleForm.getContent());
+	public String index(Model model) {
+//		Article article = new Article();
+//		article.setName(articleForm.getName());
+//		article.setContent(articleForm.getContent());
 		model.addAttribute("articleList", articleRepository.findAll());
 		return "bbs";
 	}
@@ -62,6 +63,12 @@ public class ArticleController {
 		article.setContent(articleForm.getContent());
 		articleRepository.insert(article);
 		return "redirect:/bbs";
+	}
+	
+	@RequestMapping("/insert")
+	public String commentInsert() {
+		Comment comment = new Comment();
+		
 	}
 
 }
