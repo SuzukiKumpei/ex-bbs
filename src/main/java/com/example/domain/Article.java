@@ -15,7 +15,7 @@ public class Article {
 	private String name;
 	/** 投稿内容 */
 	private String content;
-	/** 投稿内容一覧 */
+	/** Commenドメインに対して1対nの関係 */
 	private List<Comment> commentList;
 
 	@Override
