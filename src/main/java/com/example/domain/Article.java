@@ -15,13 +15,8 @@ public class Article {
 	private String name;
 	/** 投稿内容 */
 	private String content;
-	/** Commenドメインに対して1対nの関係 */
+	/** Commentドメインに対して1対nの関係 */
 	private List<Comment> commentList;
-
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", commentList=" + commentList + "]";
-	}
 
 	public Integer getId() {
 		return id;
@@ -53,6 +48,22 @@ public class Article {
 
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
+	}
+
+	public Article(Integer id, String name, String content, List<Comment> commentList) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.content = content;
+		this.commentList = commentList;
+	}
+
+	public Article() {
+	}
+
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", commentList=" + commentList + "]";
 	}
 
 }

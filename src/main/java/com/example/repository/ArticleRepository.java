@@ -35,6 +35,7 @@ public class ArticleRepository {
 		article.setId(rs.getInt("id"));
 		article.setName(rs.getString("name"));
 		article.setContent(rs.getString("content"));
+		
 		return article;
 	};
 
@@ -69,10 +70,10 @@ public class ArticleRepository {
 	 * 
 	 * @param id 記事ID
 	 */
-	public void deleteById(int id) {
-		String sql = "DELETE id,name,content FROM articles WHERE id = :id";
+	public void deleteById(Integer id) {
+		String sql = "DELETE FROM articles WHERE id = :id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
-		template.queryForObject(sql, param, ARTICLE_ROW_MAPPER);
+		template.update(sql, param);
 	}
 
 }

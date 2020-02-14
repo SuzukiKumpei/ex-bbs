@@ -6,22 +6,37 @@ package com.example.form;
  * @author suzukikunpei
  *
  */
-public class commentForm {
-
+public class CommentForm {
+	/** コメントID */
+    private String id;
 	/** 投稿者名 */
 	private String name;
 	/** 投稿内容 */
 	private String content;
 	/** 投稿ID */
-	private String article_id;
+	private String articleId;
+	
+	
 
 	public Integer getIntArticleId() {
-		return Integer.parseInt("article_id");
+		return Integer.parseInt(articleId);
+	}
+	
+	public Integer getIntId() {
+		return Integer.parseInt(id);
 	}
 
 	@Override
 	public String toString() {
-		return "commentForm [name=" + name + ", content=" + content + ", article_id=" + article_id + "]";
+		return "CommentForm [id=" + id + ", name=" + name + ", content=" + content + ", articleId=" + articleId + "]";
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -40,12 +55,16 @@ public class commentForm {
 		this.content = content;
 	}
 
-	public String getArticle_id() {
-		return article_id;
+	public String getArticleId() {
+		return articleId;
 	}
 
-	public void setArticle_id(String article_id) {
-		this.article_id = article_id;
+	public void setArticleId(String articleId) {
+		this.articleId = articleId;
 	}
+	
+	
 
+	
+	
 }

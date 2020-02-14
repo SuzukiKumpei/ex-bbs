@@ -7,20 +7,41 @@
 <body>
 
 	<strong>掲示板アプリケーション</strong>
-	<form th:action="@{/bbs/insert}" th:object="${articleForm}">
-		投稿者名:<input type="text" name="name" th:field="*{name}"><br>
-		投稿内容:<textarea name="content" th:field="*{content}"></textarea><br>
-		<button>記事作成</button>
-		
-	</form>
-	
-	<div th:each="article :${articleList}">
-	<div th:text="'投稿ID:'+${article.id}"></div>
-	<div th:text="'投稿者:'+${article.name}"></div>
-	<div th:text="'投稿内容:'+${article.content}"></div>
-	
-	</div>
-	
 
+	<form th:action="@{/bbs/insertArticle}" th:object="${articleForm}">
+		投稿者名:<input type="text" name="name" th:field="*{name}"><br>
+		投稿内容:
+		<textarea name="content" th:field="*{content}"></textarea>
+		<br>
+		<button>記事作成</button>
+		<hr>
+
+	</form>
+
+	<div th:each="article :${articleList}">
+		<div th:text="'投稿ID:'+${article.id}"></div>
+		<div th:text="'投稿者:'+${article.name}"></div>
+		<div th:text="'投稿内容:'+${article.content}"></div>
+		<form th:action="@{/bbs/deleteArticle}" th:object="${articleForm}"
+			method="post">
+			<input type="hidden" name="articleId" th:value="${article.id}">
+			<button>記事削除</button>
+		</form>
+
+		<div th:each="comment :${article.commentList}">
+			<div th:text="'コメント者名:'+${comment.name}"></div>
+			<div th:text="'コメント内容:'+${comment.content}"></div>
+		</div>
+
+		<form th:action="@{/bbs/insertComment}" th:object="${commentForm}">
+			<input type="hidden" name="articleId" th:value="${article.id}">
+			名前:<input type="text" name="name" th:field="*{name}"><br>
+			コメント:
+			<textarea name="content" th:field="*{content}"></textarea>
+			<br>
+			<button>コメント登録</button>
+		</form>
+		<hr>
+	</div>
 </body>
 </html>
